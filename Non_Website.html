@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our Little Love Game ❤️</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    width:400px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:12px 20px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff1e4d;
+}
+
+input{
+    padding:10px;
+    width:90%;
+    margin-top:10px;
+}
+
+h1{
+color:#ff4d6d;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container" id="game">
+
+<h1>Hi My Love ❤️</h1>
+<p>Let's play a little game first.</p>
+
+<button onclick="startGame()">Start Game</button>
+
+</div>
+
+<script>
+
+let step = 0;
+
+function startGame(){
+step = 1;
+nextQuestion();
+}
+
+function nextQuestion(){
+
+let content = document.getElementById("game");
+
+if(step === 1){
+content.innerHTML = `
+<h2>Question 1</h2>
+<p>What do you like most about me?</p>
+<input id="answer">
+<br>
+<button onclick="next()">Next</button>
+`;
+}
+
+else if(step === 2){
+content.innerHTML = `
+<h2>Question 2</h2>
+<p>What moment with me made you happiest?</p>
+<input id="answer">
+<br>
+<button onclick="next()">Next</button>
+`;
+}
+
+else if(step === 3){
+content.innerHTML = `
+<h2>Question 3</h2>
+<p>Why do you think we are perfect together?</p>
+<input id="answer">
+<br>
+<button onclick="next()">Next</button>
+`;
+}
+
+else if(step === 4){
+
+content.innerHTML = `
+<h1>One Last Question ❤️</h1>
+<p>You know how much you mean to me.</p>
+<p>Will you be my life partner? 💍</p>
+
+<button onclick="yes()">YES ❤️</button>
+<button onclick="moveNo()" id="noBtn">No 😅</button>
+`;
+}
+
+}
+
+function next(){
+step++;
+nextQuestion();
+}
+
+function yes(){
+document.getElementById("game").innerHTML =
+`
+<h1>❤️ You Made Me The Happiest Person ❤️</h1>
+<p>I promise to love you forever.</p>
+<p>Our journey starts now 💍</p>
+`;
+}
+
+function moveNo(){
+let btn = document.getElementById("noBtn");
+
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+</script>
+
+</body>
+</html>
